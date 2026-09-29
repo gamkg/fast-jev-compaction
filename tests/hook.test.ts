@@ -141,7 +141,7 @@ describe('compactSession', () => {
 
   it('throws on a missing key and on failed requests so the hook falls back', async () => {
     const config = resolveHookConfig({ preserveRecentMessages: 1 });
-    await expect(compactSession(transcript(), config, jevFetch(() => 0))).rejects.toThrow(/TYPESAFE_API_KEY/);
+    await expect(compactSession(transcript(), config, jevFetch(() => 0))).rejects.toThrow(/OPENROUTER_API_KEY/);
     await expect(
       compactSession(transcript(), { ...config, apiKey: 'k' }, async () => ({ status: 500, ok: false, text: 'x' })),
     ).rejects.toThrow(/500/);
